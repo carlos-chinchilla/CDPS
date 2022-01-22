@@ -37,3 +37,26 @@ Para modificar el título del html se ha usado un script que modifica dicho titu
 
 ## PARTE 3
 
+En esta parte se va a descomponer la aplicación en cuatro microservicios (aplicación políglota): productpage, details, reviews y ratings. Se muestra una figura que ilustra dicha descomposición.
+
+![Diagrama de aplicacion basada en microservicios](./images/app-microservices.png)
+
+Como se puede observar cada microservicio esta escrito en un lenguaje diferente, por lo que crearemos un Dockerfile para cada servicio, exceptuando el del servicio reviews que ya se nos proporciona. Los dockerfiles se pueden visualizar en este repositorio, por aqui abajo se proporcionan sus enlaces
+
+- [Dockerfile](./ARCHIVOS/PARTE3/Dockerfile-Productpage.txt) de productpage (python)
+- [Dockerfile](./ARCHIVOS/PARTE3/Dockerfile-Reviews.txt) de reviews (java)
+- [Dockerfile](./ARCHIVOS/PARTE3/Dockerfile-Details.txt) de details (ruby)
+- [Dockerfile](./ARCHIVOS/PARTE3/Dockerfile-Ratings.txt) de ratings (node)
+
+Una vez creados los Dockerfile se crearan las imagenes con el comando:
+```
+sudo docker build -t equipo38/productpage .
+```
+Cada una con su respectivo nombre segun el microservicio.
+
+Una vez creadas las cuatro imagenes procedemos a escribir el [docker-compose](./ARCHIVOS/PARTE3/docker-compose.yml). En dicho archivo declararemos tanto los 4 microservicios (con sus imagenes ya creadas), como las variables de entorno definidas en los Dockerfile. Aunque esta aplicación no es interactiva ni almacena datos, se han creado volumenes para cada uno de los microservicios. 
+
+Una vez terminado el docker-compose, bastara con escribir:
+```
+sudo docker-compose up -d
+```
