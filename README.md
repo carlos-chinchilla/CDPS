@@ -4,7 +4,7 @@
 <br/><br/>
 # SOLUCIÓN PRACTICA CREATIVA 2
 ### Equipo 38: Alejandro Mariscal y Carlos Chinchilla
-
+<br/><br/>
 
 # Despliegue de una aplicación escalable
 
