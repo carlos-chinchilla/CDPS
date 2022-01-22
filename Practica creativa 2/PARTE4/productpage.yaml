@@ -1,0 +1,46 @@
+##################################################################################################
+# ProductPage service
+##################################################################################################
+apiVersion: v1
+kind: Service
+metadata:
+  name: product-page
+  labels:
+    app: product-page
+    service: product-page
+spec:
+  ports:
+  - port: 9080
+    name: http
+  selector:
+    app: product-page
+  type: LoadBalancer
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: product-page
+  labels:
+    app: product-page
+    version: v1
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: product-page
+      version: v1
+  template:
+    metadata:
+      labels:
+        app: product-page
+        version: v1
+    spec:
+      containers:
+      - name: product-page
+        image: alexmariscalr/productpage:v1
+        env:
+        - name: GROUP_NUMBER
+          value: "GRUPO 38" 
+        imagePullPolicy: IfNotPresent
+        ports:
+        - containerPort: 9080
