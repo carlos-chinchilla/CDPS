@@ -13,6 +13,7 @@ Para desplegar una aplicación monolítica alojada en un servidor/MV hemos usado
 ```
 sudo git clone https://github.com/CDPS-ETSIT/practica_creativa2.git p2
 ´´´
+
 Una vez realizado el script que se puede encontrar en [a relative link](./ARCHIVOS/PARTE1/parte1.py) se ejecuta en la shell el siguiente comando para ejecutar el script que lanza la app.
 
 ```
