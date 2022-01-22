@@ -19,6 +19,7 @@ Una vez realizado el script que se puede encontrar [aquí](./ARCHIVOS/PARTE1/par
 ```
 sudo python3 parte1.py
 ```
+Para acceder a la aplicación habrá que escribir en el navegador la dirección ip de la MV con el puerto 9080: https://ipMV:9080/productpage
 
 ## PARTE 2
 
@@ -28,8 +29,11 @@ En este caso como la aplicación se va a desplegar en un contenedor, hemos cread
 ```
 sudo docker build -t equipo38/product-page .
 ```
-y posteriormente arrancamos el contenedor pasando como parámetro la variable de entorno que modifica el título del html:
+Posteriormente arrancamos el contenedor pasando como parámetro la variable de entorno que modifica el título del html:
 ```
 sudo docker run -e GROUP_NAME="EQUIPO38" -dp 9080:9080 --name EQUIPO38-BOOKSTORE equipo38/product-page
 ```
-Para modificar el título del html se ha usado un script que modifica dicho titulo y lanza la aplicación. Ese script es el que se ha usado en el comando CMD del Dockerfile. El script se puede encontrar [aquí](./ARCHIVOS/PARTE2/edithtml.py). Además como se puede observar en el comando anterior, se ha mapeado el puerto 9080 de la MV con el 9080 de contenedor
+Para modificar el título del html se ha usado un script que modifica dicho titulo y lanza la aplicación. Ese script es el que se ha usado en el comando CMD del Dockerfile. El script se puede encontrar [aquí](./ARCHIVOS/PARTE2/edithtml.py). Además como se puede observar en el comando anterior, se ha mapeado el puerto 9080 de la MV con el 9080 de contenedor. Para acceder a la aplicación: https://ipMV:9080/productpage
+
+## PARTE 3
+
