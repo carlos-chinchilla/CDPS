@@ -149,13 +149,13 @@ helm install --debug --dry-run parte5-v3 ~/parte5/helm
 Ahora, simplemente, para poder inicializar los deployments y los pods con **solo un comando** tendremos que ejecutar:
 
 ```
-helm install practica2-v1 ~/parte5/helm
+helm install parte5-v1 ~/parte5/helm
 ```
 ```
-helm install practica2-v2 ~/parte5/helm
+helm install parte5-v2 ~/parte5/helm
 ```
 ```
-helm install practica2-v3 ~/parte5/helm
+helm install parte5-v3 ~/parte5/helm
 ```
 
 Solamente tendremos que ejecutar el comando para la versión que queremos instalar. Para cambiar de versión, habrá que eliminar previamente tanto los deployments como los pods con:
