@@ -60,7 +60,112 @@ Cada una con su respectivo nombre segun el microservicio.
 
 Una vez creadas las cuatro imagenes procedemos a escribir el [docker-compose](./ARCHIVOS/PARTE3/docker-compose.yml). En dicho archivo declararemos tanto los 4 microservicios (con sus imagenes ya creadas), como las variables de entorno definidas en los Dockerfile. Aunque esta aplicación no es interactiva ni almacena datos, se han creado volumenes para cada uno de los microservicios. 
 
-Una vez terminado el docker-compose, bastara con escribir:
+Una vez terminado el docker-compose, bastará con escribir:
 ```
 sudo docker-compose up -d
+```
+
+## PARTE 4
+En esta parte de la práctica, hemos utilizado la herramienta de despliegue de Kubernetes GKE (Google Kubernetes Engine). Previamente, hemos cargado las imágenes creadas en el apartado anterior al repositorio de imágenes de Docker ***Docker Hub*** de forma que podrán ser utilizadas por los deployments durante el desarrollo de esta parte. El enlace al repositorio donde se encuentran las imágenes es : https://hub.docker.com/u/alexmariscalr
+
+Para poder utilizarlas, las llamamos en el fichero yaml de cada microservicio:
+
+```
+image: alexmariscalr/productpage:v1
+image: alexmariscalr/details:v1
+image: alexmariscalr/ratings:v1
+image: alexmariscalr/reviews:v1
+image: alexmariscalr/reviews:v2
+image: alexmariscalr/reviews:v3
+```
+
+Estos son los ficheros yaml con los deployments y los servicios para los 4 microservicios:
+
+- [productpage.yaml](./ARCHIVOS/PARTE4/productpage.yaml) de Product Page
+- [details.yaml](./ARCHIVOS/PARTE4/details.yaml) de Details
+- [ratings.yaml](./ARCHIVOS/PARTE4/ratings.yaml) de Ratings
+- [reviews-svc.yaml](./ARCHIVOS/PARTE4/reviews-svc.yaml) del servicio de Reviews
+- [review-v1.yaml](./ARCHIVOS/PARTE4/productpage.yaml) con el deployment de la versión 1 de Reviews
+- [review-v2.yaml](./ARCHIVOS/PARTE4/review-v2.yaml) con el deployment de la versión 2 de Reviews
+- [review-v3.yaml](./ARCHIVOS/PARTE4/review-v3.yaml) con el deployment de la versión 3 de Reviews
+
+Una vez creados, arrancamos el cluster de Kubernetes con 5 nodos. Desde GKE:
+
+Establecemos la zona y región donde se va a desplegar el cluster:
+```
+gcloud config set compute/zone us-central1-a 
+```
+
+Creamos el clúster llamado ***cluster-parte4*** con 5 nodos:
+```
+gcloud container clusters create cluster-parte4 --num-nodes=5 --zone=us-central1-a
+```
+
+Subimos todos los ficheros al proyecto de google cloud en ***~/parte4/***
+Accedemos a ese directorio : 
+```
+cd parte4
+```
+Finalmente creamos los objetos a partir de los ficheros yaml: 
+```
+kubectl apply –f productpage.yaml
+kubectl apply –f details.yaml
+kubectl apply –f ratings.yaml
+kubectl apply –f reviews-svc.yaml
+```
+Y, dependiendo de la versión que quiera mostrarse:
+```
+kubectl apply –f review-v1.yaml     kubectl apply –f review-v2.yaml     kubectl apply –f review-v3.yaml
+```
+
+Para comprobar el estado de los podsy de los servicios que están corriendo:
+  - Listar servicios : ```kubectl get svc```
+  - Listar deployments : ```kubectl get deploy```
+  - Listar pods : ```kubectl get po```
+
+Podemos observar que se han creado 2 pods para el microservicio Rating y 3 pods para el servicio de Details, ya que así ha sido especificado en los deployments de cada uno de los servicios      
+  
+Podemos acceder al servicio de productpage a través de la dirección IP externa que se muestra al listar los servicios, con el siguiente formato de URL:
+```<dirección_IP_externa>:9080/productpage```
+
+
+
+## PARTE OPCIONAL
+
+En esta parte, hemos desplegado los microservicios de Kubernetes utilizando [Helm Chart](https://helm.sh/).
+
+Con los siguientes comandos, crearemos y generaremos las plantillas renderizadas. Cada una de ellas contendrá los correspondientes ficheros yaml con sus respectivos servicios y deployments. Se han creado 3 plantillas, una para cada versión:
+
+```
+helm install --debug --dry-run parte5-v1 ~/parte5/helm
+```
+```
+helm install --debug --dry-run parte5-v2 ~/parte5/helm
+```
+```
+helm install --debug --dry-run parte5-v3 ~/parte5/helm
+```
+
+Ahora, simplemente, para poder inicializar los deployments y los pods con **solo un comando** tendremos que ejecutar:
+
+```
+helm install practica2-v1 ~/parte5/helm
+```
+```
+helm install practica2-v2 ~/parte5/helm
+```
+```
+helm install practica2-v3 ~/parte5/helm
+```
+
+Solamente tendremos que ejecutar el comando para la versión que queremos instalar. Para cambiar de versión, habrá que eliminar previamente tanto los deployments como los pods con:
+
+```
+kubectl delete --all services
+```
+```
+kubectl delete --all deployments
+```
+```
+kubectl delete --all pods
 ```
