@@ -25,6 +25,8 @@ Para acceder a la aplicación habrá que escribir en el navegador la dirección 
 
 Para la segunda parte de la práctica se va a hacer el despliegue de la aplicación monolítica pero en este caso usando contenedores Docker. Para esta segunda parte y para el resto de la práctica hemos usado el servicio de computacion en la nube de google cloud para desplegar las instancias necesarias. Como en la primera parte, clonamos el repositorio de git a la maquina virtual para poder utilizar los archivos necesarios para que la app funcione. 
 
+![Diagrama aplicacion monolitica](./images/app-monolith.png)
+
 En este caso como la aplicación se va a desplegar en un contenedor, hemos creado su correspondiente Dockerfile que pueden consultar [aquí](./ARCHIVOS/PARTE2/Dockerfile.txt). Una vez escrito el Dockerfile creamos la imagen con:
 ```
 sudo docker build -t equipo38/product-page .
