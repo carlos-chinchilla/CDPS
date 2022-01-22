@@ -3,6 +3,7 @@ from subprocess import call
 import sys
 import os
 
+#Editamos el titulo del html
 fin=open("bookinfo/src/productpage/templates/productpage.html", "r")
 fout=open("bookinfo/src/productpage/templates/index2.html", "w")
 
