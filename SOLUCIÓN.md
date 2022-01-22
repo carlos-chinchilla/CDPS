@@ -3,9 +3,9 @@
 
 <br/><br/>
 
-#Equipo 38: Alejandro Mariscal y Carlos Chinchilla
-#Despliegue de una aplicación escalable
+# Equipo 38: Alejandro Mariscal y Carlos Chinchilla
+# Despliegue de una aplicación escalable
 
-##PARTE 1
+## PARTE 1
 
 Para desplegar una aplicación monolítica alojada en un servidor/MV hemos usado el servicio IaaS de Google Cloud. Para esta primera parte se ha realizado un script en python que automatiza el despliegue de una aplicación que muestra informacióm sobre libros. 
