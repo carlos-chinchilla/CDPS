@@ -2,8 +2,10 @@
 <img  align="right" width="60" style="float: right;" src="https://www.dit.upm.es/images/dit08.gif">
 
 <br/><br/>
+# SOLUCIÓN PRACTICA CREATIVA 2
+### Equipo 38: Alejandro Mariscal y Carlos Chinchilla
 
-# Equipo 38: Alejandro Mariscal y Carlos Chinchilla
+
 # Despliegue de una aplicación escalable
 
 ## PARTE 1
