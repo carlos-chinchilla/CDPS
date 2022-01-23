@@ -172,7 +172,7 @@ kubectl delete --all pods
 
 ## CONCLUSIÓN
 
-Analizando estas cuatro maneras de implementar el despliegue de esta aplicación, hemos valorado los pros y las contras de cada una, en términos de fiabilidad y escalabilidad.
+Analizando estas cuatro maneras de implementar el despliegue de esta aplicación, hemos valorado los pros y los contras de cada una, en términos de fiabilidad y escalabilidad.
 
 En las dos primeras partes, se ha desplegado una aplicación monolítica que agrupa todas las funciones en un solo código. Las otras dos partes, segmentan esta aplicación en cuatro microservicios que son desplegados en diferentes contenedores o clusters.
 
