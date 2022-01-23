@@ -169,3 +169,21 @@ kubectl delete --all deployments
 ```
 kubectl delete --all pods
 ```
+
+## CONCLUSIÓN
+
+Analizando estas cuatro maneras de implementar el despliegue de esta aplicación, hemos valorado los pros y las contras de cada una, en términos de fiabilidad y escalabilidad.
+
+En las dos primeras partes, se ha desplegado una aplicación monolítica que agrupa todas las funciones en un solo código. Las otras dos partes, segmentan esta aplicación en cuatro microservicios que son desplegados en diferentes contenedores o clusters.
+
+En el ámbito de la escalabilidad y la flexibilidad, está claro que una aplicación monolítica muestra mucha más rigidez y es más dificil de escalar. Aplicaciones como Kubernetes permiten realizar réplcas de un pod con las mismas caracteristicas que utilizan el mismo servicio.
+
+En términos de eficiencia, si no fuera por las altas velocidades en cuanto a las arquitecturas de cloud y a internet, se podría decir que son más eficientes las aplicaciones monolíticas, ya que presentan un solo código. Pero dadas las mejoras durante estos últimos años y la expansión de aplicaciones como Kubernetes y Docker-Compose, podemos decir que en efectividad ambos métodos se consideran iguales.
+
+Errores: en un microservicio, si surge algún fallo o problema, este afectará a dicho microservicio únicamente. A diferencia de las plicaciones monolíticas en las que un error puede hacer que todo el monolito falle. 
+
+Las DevOps están extremadamente ligadas a los microservicios en los que el cambio es constante. Con ellos, la productividad aumenta de manera proporcional al aumento de la aplicación.
+
+
+
+
