@@ -176,7 +176,7 @@ Analizando estas cuatro maneras de implementar el despliegue de esta aplicación
 
 En las dos primeras partes, se ha desplegado una aplicación monolítica que agrupa todas las funciones en un solo código. Las otras dos partes, segmentan esta aplicación en cuatro microservicios que son desplegados en diferentes contenedores o clusters.
 
-En el ámbito de la escalabilidad y la flexibilidad, está claro que una aplicación monolítica muestra mucha más rigidez y es más dificil de escalar. Aplicaciones como Kubernetes permiten realizar réplcas de un pod con las mismas caracteristicas que utilizan el mismo servicio.
+En el ámbito de la escalabilidad y la flexibilidad, está claro que una aplicación monolítica muestra mucha más rigidez y es más dificil de escalar. Aplicaciones como Kubernetes permiten realizar réplicas de un pod con las mismas caracteristicas que utilizan el mismo servicio.
 
 En términos de eficiencia, si no fuera por las altas velocidades en cuanto a las arquitecturas de cloud y a internet, se podría decir que son más eficientes las aplicaciones monolíticas, ya que presentan un solo código. Pero dadas las mejoras durante estos últimos años y la expansión de aplicaciones como Kubernetes y Docker-Compose, podemos decir que en efectividad ambos métodos se consideran iguales.
 
